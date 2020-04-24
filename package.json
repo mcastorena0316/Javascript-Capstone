@@ -1,0 +1,39 @@
+{
+  "name": "Javascript-Capstone",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcastorena0316/Javascript-Capstone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcastorena0316/Javascript-Capstone/issues"
+  },
+  "homepage": "https://github.com/mcastorena0316/Javascript-Capstone#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-core": "6",
+    "babel-jest": "^25.4.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.4.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "phaser": "^3.0.0"
+  }
+}
