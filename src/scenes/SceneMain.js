@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Player from '../Entities/Player';
+import DogGun from '../Entities/Enemy1';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -12,7 +13,13 @@ class SceneMain extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32,
     });
+
+    this.load.spritesheet('sprEnemy0', 'assets/pug.png', {
+      frameWidth: 32,
+      frameHeight: 48,
+    });
     this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
+    this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
   }
 
   create() {
@@ -39,10 +46,25 @@ class SceneMain extends Phaser.Scene {
       repeat: -1,
     });
 
-
-    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    this.enemies = this.add.group();
+    this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
+
+    this.time.addEvent({
+      delay: 1000,
+      callback() {
+        const enemy = new DogGun(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          0,
+        );
+        this.enemies.add(enemy);
+      },
+      callbackScope: this,
+      loop: true,
+    });
   }
+
 
   update() {
     this.player.update();
@@ -66,7 +88,7 @@ class SceneMain extends Phaser.Scene {
       this.player.flipX = true;
     }
 
-    if (this.keySpace.isDown) {
+    if (cursors.space.isDown) {
       this.player.setData('isShooting', true);
       this.player.anims.play('up', true);
     } else {
