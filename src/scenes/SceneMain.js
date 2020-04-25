@@ -8,11 +8,11 @@ class SceneMain extends Phaser.Scene {
 
 
   preload() {
-    this.load.image('cokecan', 'assets/benito.png');
     this.load.spritesheet('sprPlayer', 'assets/benito.png', {
       frameWidth: 32,
       frameHeight: 32,
     });
+    this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
   }
 
   create() {
@@ -41,6 +41,7 @@ class SceneMain extends Phaser.Scene {
 
 
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    this.playerLasers = this.add.group();
   }
 
   update() {
@@ -63,8 +64,28 @@ class SceneMain extends Phaser.Scene {
       this.player.moveRight();
       this.player.anims.play('left', true);
       this.player.flipX = true;
-    } else {
+    }
 
+    if (this.keySpace.isDown) {
+      this.player.setData('isShooting', true);
+      this.player.anims.play('up', true);
+    } else {
+      this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+      this.player.setData('isShooting', false);
+    }
+
+    for (let i = 0; i < this.playerLasers.getChildren().length; i += 1) {
+      const laser = this.playerLasers.getChildren()[i];
+      laser.update();
+
+      if (laser.x < -laser.displayWidth
+        || laser.x > this.game.config.width + laser.displayWidth
+        || laser.y < -laser.displayHeight * 4
+        || laser.y > this.game.config.height + laser.displayHeight) {
+        if (laser) {
+          laser.destroy();
+        }
+      }
     }
   }
 }
