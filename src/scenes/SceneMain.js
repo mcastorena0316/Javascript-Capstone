@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
 import Player from '../Entities/Player';
-import DogGun from '../Entities/Enemy1';
+import DogGun from '../Entities/Enemy0';
+import HumanChaser from '../Entities/Enemy1';
+import SpiderGun from '../Entities/Enemy2';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -14,10 +16,19 @@ class SceneMain extends Phaser.Scene {
       frameHeight: 32,
     });
 
-    this.load.spritesheet('sprEnemy0', 'assets/pug.png', {
-      frameWidth: 32,
-      frameHeight: 48,
+
+    this.load.image('sprEnemy0', 'assets/dog3.png');
+
+
+    this.load.spritesheet('sprEnemy1', 'assets/human.png', {
+      frameWidth: 24,
+      frameHeight: 24,
+      startFrame: 11,
+      endFrame: 12,
     });
+
+    this.load.image('spryEnemy2', 'assets/spider.png');
+
     this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
     this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
   }
@@ -53,48 +64,128 @@ class SceneMain extends Phaser.Scene {
     this.time.addEvent({
       delay: 1000,
       callback() {
-        const enemy = new DogGun(
-          this,
-          Phaser.Math.Between(0, this.game.config.width),
-          0,
-        );
-        this.enemies.add(enemy);
+        let enemy = null;
+
+        if (Phaser.Math.Between(0, 10) >= 3) {
+          enemy = new DogGun(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        } else if (Phaser.Math.Between(0, 10) >= 5) {
+          if (this.getEnemiesByType('HumanChaser').length < 5) {
+            enemy = new HumanChaser(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0,
+            );
+          }
+        } else {
+          enemy = new SpiderGun(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0,
+          );
+        }
+
+        if (enemy !== null) {
+          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          this.enemies.add(enemy);
+        }
       },
       callbackScope: this,
       loop: true,
     });
+
+    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+
+        // enemy.explode(true);
+        playerLaser.destroy();
+      }
+    });
+
+    // this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+    //   if (!player.getData('isDead')
+    //       && !enemy.getData('isDead')) {
+    //     player.explode(false);
+    //     enemy.explode(true);
+    //   }
+    // });
+
+    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+      if (!player.getData('isDead')
+          && !laser.getData('isDead')) {
+        // player.explode(false);
+        laser.destroy();
+      }
+    });
+  }
+
+
+  getEnemiesByType(type) {
+    const arr = [];
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+      const enemy = this.enemies.getChildren()[i];
+      if (enemy.getData('type') === type) {
+        arr.push(enemy);
+      }
+    }
+    return arr;
   }
 
 
   update() {
-    this.player.update();
-    const cursors = this.input.keyboard.createCursorKeys();
+    if (!this.player.getData('isDead')) {
+      this.player.update();
+      const cursors = this.input.keyboard.createCursorKeys();
 
-    if (cursors.up.isDown) {
-      this.player.moveUp();
-      this.player.anims.play('up', true);
-    } else if (cursors.down.isDown) {
-      this.player.moveDown();
-      this.player.anims.play('up', true);
+      if (cursors.up.isDown) {
+        this.player.moveUp();
+        this.player.anims.play('up', true);
+      } else if (cursors.down.isDown) {
+        this.player.moveDown();
+        this.player.anims.play('up', true);
+      }
+
+      if (cursors.left.isDown) {
+        this.player.moveLeft();
+        this.player.anims.play('left', true);
+        this.player.flipX = false;
+      } else if (cursors.right.isDown) {
+        this.player.moveRight();
+        this.player.anims.play('left', true);
+        this.player.flipX = true;
+      }
+
+      if (cursors.space.isDown) {
+        this.player.setData('isShooting', true);
+        this.player.anims.play('up', true);
+      } else {
+        this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+        this.player.setData('isShooting', false);
+      }
     }
 
-    if (cursors.left.isDown) {
-      this.player.moveLeft();
-      this.player.anims.play('left', true);
-      this.player.flipX = false;
-    } else if (cursors.right.isDown) {
-      this.player.moveRight();
-      this.player.anims.play('left', true);
-      this.player.flipX = true;
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+      const enemy = this.enemies.getChildren()[i];
+      enemy.update();
+      if (enemy.x < -enemy.displayWidth
+        || enemy.x > this.game.config.width + enemy.displayWidth
+        || enemy.y < -enemy.displayHeight * 4
+        || enemy.y > this.game.config.height + enemy.displayHeight) {
+        if (enemy) {
+          if (enemy.onDestroy !== undefined) {
+            enemy.onDestroy();
+          }
+          enemy.destroy();
+        }
+      }
     }
 
-    if (cursors.space.isDown) {
-      this.player.setData('isShooting', true);
-      this.player.anims.play('up', true);
-    } else {
-      this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
-      this.player.setData('isShooting', false);
-    }
 
     for (let i = 0; i < this.playerLasers.getChildren().length; i += 1) {
       const laser = this.playerLasers.getChildren()[i];
