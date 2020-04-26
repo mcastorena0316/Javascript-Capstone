@@ -35,10 +35,14 @@ class SceneMain extends Phaser.Scene {
       frameHeight: 109,
     });
 
-    this.load.image('spryEnemy2', 'assets/spider.png');
+    this.load.spritesheet('sprEnemy2', 'assets/cobras.png', {
+      frameWidth: 48,
+      frameHeight: 48,
+    });
 
     this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
     this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
+    this.load.image('sprLifes', 'assets/lifes.png');
   }
 
   create() {
@@ -48,6 +52,16 @@ class SceneMain extends Phaser.Scene {
       this.game.config.height * 0.5,
       'sprPlayer',
     );
+
+    this.lifes = this.add.image(20, 20, 'sprLifes').setScale(1.4);
+
+    this.title2 = this.add.text(40, 15, `X ${this.player.getData('health')}`, {
+      fontFamily: 'monospace',
+      fontSize: 15,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
 
     this.player.setScale(2);
 
@@ -59,10 +73,17 @@ class SceneMain extends Phaser.Scene {
     });
 
     this.anims.create({
+      key: 'sprEnemy2',
+      frames: this.anims.generateFrameNumbers('sprEnemy2', { start: 0, end: 2 }),
+      frameRate: 6,
+      repeat: -1,
+    });
+
+    this.anims.create({
       key: 'sprExplosion',
       frames: this.anims.generateFrameNumbers('sprExplosion', { start: 0, end: 8 }),
       frameRate: 10,
-      repeat: -1,
+      repeat: 0,
     });
 
     this.anims.create({
@@ -124,7 +145,6 @@ class SceneMain extends Phaser.Scene {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
-
         enemy.explode(true);
         playerLaser.destroy();
       }
@@ -133,16 +153,30 @@ class SceneMain extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead')
           && !enemy.getData('isDead')) {
-        player.explode(false);
-        enemy.explode(true);
+        if (player.getData('health') > 0) {
+          enemy.explode(true);
+          player.updateLifes();
+          this.title2.setText(`X ${this.player.getData('health')}`);
+        } else {
+          player.explode(false);
+          player.onDestroy();
+          enemy.explode(true);
+        }
       }
     });
 
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead')
           && !laser.getData('isDead')) {
-        player.explode(false);
-        laser.destroy();
+        if (player.getData('health') > 0) {
+          player.updateLifes();
+          laser.destroy();
+          this.title2.setText(`X ${this.player.getData('health')}`);
+        } else {
+          player.explode(false);
+          player.onDestroy();
+          laser.destroy();
+        }
       }
     });
   }

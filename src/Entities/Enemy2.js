@@ -5,7 +5,7 @@ import EnemyLaser from './EnemyLaser';
 
 class SpiderGun extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'spryEnemy2', 'SpiderGun');
+    super(scene, x, y, 'sprEnemy2', 'SpiderGun');
     this.body.velocity.y = Phaser.Math.Between(50, 100);
     this.shootTimer = this.scene.time.addEvent({
       delay: 1000,
@@ -21,7 +21,9 @@ class SpiderGun extends Entity {
       callbackScope: this,
       loop: true,
     });
-    this.play('spryEnemy2');
+
+
+    this.play('sprEnemy2');
   }
 
   onDestroy() {

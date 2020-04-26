@@ -10,9 +10,6 @@ class SceneMainMenu extends Phaser.Scene {
     this.load.image('sprBtnPlay', 'assets/sprBtnPlay.png');
     this.load.image('sprBtnPlayHover', 'assets/sprBtnPlayHover.png');
     this.load.image('sprBtnPlayDown', 'assets/sprBtnPlayDown.png');
-    this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
-    this.load.image('sprBtnRestartHover', 'assets/sprBtnRestartHover.png');
-    this.load.image('sprBtnRestartDown', 'assets/sprBtnRestartDown.png');
   }
 
   create() {
@@ -25,7 +22,7 @@ class SceneMainMenu extends Phaser.Scene {
     this.btnPlay.setInteractive();
 
 
-    //styling of the button (TO CHANGE)
+    // styling of the button (TO CHANGE)
     // this.btnPlay.on('pointerover', function () {
     //   this.btnPlay.setTexture('sprBtnPlayHover'); // set the button texture to sprBtnPlayHover
     //   // this.sfx.btnOver.play(); // play the button over sound
@@ -44,20 +41,19 @@ class SceneMainMenu extends Phaser.Scene {
     //   this.setTexture("sprBtnPlay");
     // }, this);
 
-    this.btnPlay.on("pointerup", function() {
-    this.btnPlay.setTexture("sprBtnPlay");
-    this.scene.start("SceneMain");
-  }, this);
+    this.btnPlay.on('pointerup', () => {
+      this.btnPlay.setTexture('sprBtnPlay');
+      this.scene.start('SceneMain');
+    }, this);
 
-    this.title = this.add.text(this.game.config.width * 0.5, 128, "BATTLE OF KITTIES", {
-    fontFamily: 'monospace',
-    fontSize: 48,
-    fontStyle: 'bold',
-    color: '#ffffff',
-    align: 'center'
-  });
-  this.title.setOrigin(0.5);
-
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'BATTLE OF KITTIES', {
+      fontFamily: 'monospace',
+      fontSize: 48,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
+    this.title.setOrigin(0.5);
   }
 }
 
