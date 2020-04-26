@@ -25,20 +25,22 @@ class SceneMain extends Phaser.Scene {
 
 
     this.load.spritesheet('sprEnemy1', 'assets/human.png', {
-      frameWidth: 24,
-      frameHeight: 24,
+      frameWidth: 50,
+      frameHeight: 50,
 
-    });
-
-    this.load.spritesheet('sprExplosion', 'assets/explosion.png', {
-      frameWidth: 111,
-      frameHeight: 109,
     });
 
     this.load.spritesheet('sprEnemy2', 'assets/cobras.png', {
       frameWidth: 48,
       frameHeight: 48,
     });
+
+
+    this.load.spritesheet('sprExplosion', 'assets/explosion.png', {
+      frameWidth: 111,
+      frameHeight: 109,
+    });
+
 
     this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
     this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
@@ -71,6 +73,14 @@ class SceneMain extends Phaser.Scene {
       frameRate: 8,
       repeat: -1,
     });
+
+    this.anims.create({
+      key: 'sprEnemy1',
+      frames: this.anims.generateFrameNumbers('sprEnemy1', { start: 12, end: 15 }),
+      frameRate: 6,
+      repeat: -1,
+    });
+
 
     this.anims.create({
       key: 'sprEnemy2',
