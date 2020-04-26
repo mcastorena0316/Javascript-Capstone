@@ -55,14 +55,22 @@ class SceneMain extends Phaser.Scene {
       'sprPlayer',
     );
 
-    this.lifes = this.add.image(20, 20, 'sprLifes').setScale(1.4);
+    this.lifes = this.add.image(20, 20, 'sprLifes').setScale(1.6);
 
     this.title2 = this.add.text(40, 15, `X ${this.player.getData('health')}`, {
       fontFamily: 'monospace',
-      fontSize: 15,
+      fontSize: 20,
       fontStyle: 'bold',
       color: '#ffffff',
       align: 'center',
+    });
+
+    this.yourScore = this.add.text(40, 600, 'Score: 0', {
+      fontFamily: 'monospace',
+      fontSize: 20,
+      fontStyle: 'bold',
+      color: '#ffffff',
+
     });
 
     this.player.setScale(2);
@@ -156,7 +164,10 @@ class SceneMain extends Phaser.Scene {
           enemy.onDestroy();
         }
         enemy.explode(true);
+        enemy.body = null;
         playerLaser.destroy();
+        this.player.updateScore();
+        this.yourScore.setText(`Score: ${this.player.getData('score')}`);
       }
     });
 

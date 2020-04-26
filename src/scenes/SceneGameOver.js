@@ -20,7 +20,6 @@ class SceneGameOver extends Phaser.Scene {
       color: '#ffffff',
       align: 'center',
     });
-    this.title.setOrigin(0.5);
 
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,

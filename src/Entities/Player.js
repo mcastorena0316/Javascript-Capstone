@@ -6,6 +6,7 @@ class Player extends Entity {
   constructor(scene, x, y, key) {
     super(scene, x, y, key, 'Player', 7);
     this.setData('speed', 200);
+    this.setData('score', 0);
     this.play('sprPlayer');
     this.setData('isShooting', false);
     this.setData('timerShootDelay', 10);
@@ -31,6 +32,11 @@ class Player extends Entity {
   updateLifes() {
     this.setData('health', this.getData('health') - 1);
   }
+
+  updateScore() {
+    this.setData('score', this.getData('score') + 10);
+  }
+
 
   update() {
     this.body.setVelocity(0, 0);
