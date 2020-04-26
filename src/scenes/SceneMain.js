@@ -17,14 +17,22 @@ class SceneMain extends Phaser.Scene {
     });
 
 
-    this.load.image('sprEnemy0', 'assets/dog3.png');
+    this.load.spritesheet('sprEnemy0', 'assets/dog4.png', {
+      frameWidth: 50,
+      frameHeight: 67.5,
+
+    });
 
 
     this.load.spritesheet('sprEnemy1', 'assets/human.png', {
       frameWidth: 24,
       frameHeight: 24,
-      startFrame: 11,
-      endFrame: 12,
+
+    });
+
+    this.load.spritesheet('sprExplosion', 'assets/explosion.png', {
+      frameWidth: 111,
+      frameHeight: 109,
     });
 
     this.load.image('spryEnemy2', 'assets/spider.png');
@@ -42,6 +50,20 @@ class SceneMain extends Phaser.Scene {
     );
 
     this.player.setScale(2);
+
+    this.anims.create({
+      key: 'sprEnemy0',
+      frames: this.anims.generateFrameNumbers('sprEnemy0', { start: 3, end: 5 }),
+      frameRate: 8,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'sprExplosion',
+      frames: this.anims.generateFrameNumbers('sprExplosion', { start: 0, end: 8 }),
+      frameRate: 10,
+      repeat: -1,
+    });
 
     this.anims.create({
       key: 'left',
@@ -89,7 +111,7 @@ class SceneMain extends Phaser.Scene {
         }
 
         if (enemy !== null) {
-          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          enemy.setScale(Phaser.Math.Between(10, 13) * 0.1);
           this.enemies.add(enemy);
         }
       },
@@ -103,23 +125,23 @@ class SceneMain extends Phaser.Scene {
           enemy.onDestroy();
         }
 
-        // enemy.explode(true);
+        enemy.explode(true);
         playerLaser.destroy();
       }
     });
 
-    // this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
-    //   if (!player.getData('isDead')
-    //       && !enemy.getData('isDead')) {
-    //     player.explode(false);
-    //     enemy.explode(true);
-    //   }
-    // });
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead')
+          && !enemy.getData('isDead')) {
+        player.explode(false);
+        enemy.explode(true);
+      }
+    });
 
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead')
           && !laser.getData('isDead')) {
-        // player.explode(false);
+        player.explode(false);
         laser.destroy();
       }
     });
@@ -182,6 +204,20 @@ class SceneMain extends Phaser.Scene {
             enemy.onDestroy();
           }
           enemy.destroy();
+        }
+      }
+    }
+
+    for (let i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
+      const laser = this.enemyLasers.getChildren()[i];
+      laser.update();
+
+      if (laser.x < -laser.displayWidth
+        || laser.x > this.game.config.width + laser.displayWidth
+        || laser.y < -laser.displayHeight * 4
+        || laser.y > this.game.config.height + laser.displayHeight) {
+        if (laser) {
+          laser.destroy();
         }
       }
     }

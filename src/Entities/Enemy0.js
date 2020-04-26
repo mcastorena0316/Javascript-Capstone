@@ -7,6 +7,7 @@ class DogGun extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'sprEnemy0', 'DogGun');
     this.body.velocity.y = Phaser.Math.Between(50, 100);
+    this.play('sprEnemy0');
     this.shootTimer = this.scene.time.addEvent({
       delay: 1000,
       callback() {

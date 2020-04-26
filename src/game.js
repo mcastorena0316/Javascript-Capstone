@@ -8,7 +8,7 @@ const gameConfig = {
   type: Phaser.WEBGL,
   width: 480,
   height: 640,
-  backgroundColor: 'black',
+  backgroundColor: '#4488AA',
   physics: {
     default: 'arcade',
     arcade: {
@@ -23,4 +23,5 @@ const gameConfig = {
 };
 
 // eslint-disable-next-line no-new
+// eslint-disable-next-line no-unused-vars
 const game = new Phaser.Game(gameConfig);
