@@ -48,7 +48,9 @@ class Player extends Entity {
       if (this.getData('timerShootTick') < this.getData('timerShootDelay')) {
         this.setData('timerShootTick', this.getData('timerShootTick') + 1);
         const laser = new PlayerLaser(this.scene, this.x, this.y);
+        laser.setScale(1.5);
         this.scene.playerLasers.add(laser);
+
 
         // need to add sound efect
         this.setData('timerShootTick', 0);

@@ -16,7 +16,8 @@ class DogGun extends Entity {
           this.x,
           this.y,
         );
-        laser.setScale(this.scaleX);
+        laser.setScale(2);
+        // laser.setScale(this.scaleX);
         this.scene.enemyLasers.add(laser);
       },
       callbackScope: this,

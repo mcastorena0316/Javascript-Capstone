@@ -39,6 +39,15 @@ class Entity extends Phaser.GameObjects.Sprite {
       this.setData('isDead', true);
     }
   }
+
+  // update() {
+  //   if (this.layers.getChildren()[0].y > 0) {
+  //     for (let i = 0; i < this.layers.getChildren().length; i+= 1) {
+  //       const layer = this.layers.getChildren()[i];
+  //       layer.y = (-layer.displayHeight) + (layer.displayHeight * i);
+  //     }
+  //   }
+  // }
 }
 
 export default Entity;

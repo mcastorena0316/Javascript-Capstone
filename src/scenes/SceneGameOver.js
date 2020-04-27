@@ -7,13 +7,15 @@ class SceneGameOver extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image('sprImg', 'assets/sadcat.png');
     this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
     this.load.image('sprBtnRestartHover', 'assets/sprBtnRestartHover.png');
     this.load.image('sprBtnRestartDown', 'assets/sprBtnRestartDown.png');
   }
 
   create() {
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
+    this.add.image(this.game.config.width * 0.5, 300, 'sprImg').setScale(0.4);
+    this.title = this.add.text(this.game.config.width * 0.2, 100, 'GAME OVER', {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
@@ -23,7 +25,7 @@ class SceneGameOver extends Phaser.Scene {
 
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.75,
       'sprBtnRestart',
     );
 

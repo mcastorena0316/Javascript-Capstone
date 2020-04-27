@@ -7,15 +7,22 @@ class SceneMainMenu extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image('bg4', 'assets/ken.png');
+    this.load.image('logo', 'assets/logo2.png');
+    this.load.image('cover', 'assets/coverkitty4.png');
     this.load.image('sprBtnPlay', 'assets/sprBtnPlay.png');
     this.load.image('sprBtnPlayHover', 'assets/sprBtnPlayHover.png');
     this.load.image('sprBtnPlayDown', 'assets/sprBtnPlayDown.png');
   }
 
   create() {
+
+    // this.add.image(240, 320, 'bg4').setScale(2);
+    this.add.image(this.game.config.width * 0.5, 95, 'logo').setScale(0.8);
+    this.add.image(240, 320, 'cover').setScale(0.8);
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.8,
       'sprBtnPlay',
     );
 
@@ -46,14 +53,7 @@ class SceneMainMenu extends Phaser.Scene {
       this.scene.start('SceneMain');
     }, this);
 
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'BATTLE OF KITTIES', {
-      fontFamily: 'monospace',
-      fontSize: 48,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
-    this.title.setOrigin(0.5);
+
   }
 }
 

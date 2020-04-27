@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+// import ScrollingBackground from '../Entities/ScrollingBackground';
 import Player from '../Entities/Player';
 import DogGun from '../Entities/Enemy0';
 import HumanChaser from '../Entities/Enemy1';
@@ -11,6 +12,8 @@ class SceneMain extends Phaser.Scene {
 
 
   preload() {
+    this.load.image('sprBg0', 'assets/bg1.jpg');
+    this.load.image('sprBg1', 'assets/bg3.jpg');
     this.load.spritesheet('sprPlayer', 'assets/benito.png', {
       frameWidth: 32,
       frameHeight: 32,
@@ -48,12 +51,21 @@ class SceneMain extends Phaser.Scene {
   }
 
   create() {
+    // this.backgrounds = [];
+    // for (let i = 0; i < 5; i += 1) {
+    //   const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
+    //   this.backgrounds.push(bg);
+    // }
+
+    this.add.image(240, 320, 'sprBg0');
+
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       'sprPlayer',
     );
+
 
     this.lifes = this.add.image(20, 20, 'sprLifes').setScale(1.6);
 
@@ -216,6 +228,10 @@ class SceneMain extends Phaser.Scene {
 
 
   update() {
+    // for (let i = 0; i < this.backgrounds.length; i += 1) {
+    //   this.backgrounds[i].update();
+    // }
+
     if (!this.player.getData('isDead')) {
       this.player.update();
       const cursors = this.input.keyboard.createCursorKeys();

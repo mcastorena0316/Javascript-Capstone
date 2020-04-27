@@ -8,7 +8,7 @@ const gameConfig = {
   type: Phaser.WEBGL,
   width: 480,
   height: 640,
-  backgroundColor: '#4488AA',
+  backgroundColor: 'black',
   physics: {
     default: 'arcade',
     arcade: {

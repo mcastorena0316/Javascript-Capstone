@@ -15,7 +15,7 @@ class SpiderGun extends Entity {
           this.x,
           this.y,
         );
-        laser.setScale(this.scaleX);
+        laser.setScale(2);
         this.scene.enemyLasers.add(laser);
       },
       callbackScope: this,
