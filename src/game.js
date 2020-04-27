@@ -2,7 +2,9 @@ import Phaser from 'phaser';
 
 import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
+import SceneAbout from './scenes/SceneAbout';
 import SceneGameOver from './scenes/SceneGameOver';
+import SceneScores from './scenes/SceneScores';
 
 const gameConfig = {
   type: Phaser.WEBGL,
@@ -15,7 +17,7 @@ const gameConfig = {
       gravity: { x: 0, y: 0 },
     },
   },
-  scene: [SceneMainMenu,
+  scene: [SceneMainMenu, SceneAbout, SceneScores,
     SceneMain,
     SceneGameOver],
   pixelArt: true,

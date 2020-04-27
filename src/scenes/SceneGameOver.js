@@ -37,7 +37,6 @@ class SceneGameOver extends Phaser.Scene {
       'sprBtnRestart',
     );
 
-    
 
     this.btnRestart.setInteractive();
 
