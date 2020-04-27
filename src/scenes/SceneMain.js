@@ -4,6 +4,7 @@ import Player from '../Entities/Player';
 import DogGun from '../Entities/Enemy0';
 import HumanChaser from '../Entities/Enemy1';
 import SpiderGun from '../Entities/Enemy2';
+import Storage from '../localStorage';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -194,6 +195,7 @@ class SceneMain extends Phaser.Scene {
           player.explode(false);
           player.onDestroy();
           enemy.explode(true);
+          player.updateScoretoLocal(this.player.getData('score'));
         }
       }
     });
@@ -209,11 +211,11 @@ class SceneMain extends Phaser.Scene {
           player.explode(false);
           player.onDestroy();
           laser.destroy();
+          player.updateScoretoLocal(this.player.getData('score'));
         }
       }
     });
   }
-
 
   getEnemiesByType(type) {
     const arr = [];
@@ -309,5 +311,4 @@ class SceneMain extends Phaser.Scene {
     }
   }
 }
-
 export default SceneMain;

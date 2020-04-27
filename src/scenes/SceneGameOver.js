@@ -23,11 +23,21 @@ class SceneGameOver extends Phaser.Scene {
       align: 'center',
     });
 
+    this.score = this.add.text(this.game.config.width * 0.3, 550, `Your Score is: ${localStorage.getItem('score')}`, {
+      fontFamily: 'monospace',
+      fontSize: 20,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
+
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.75,
       'sprBtnRestart',
     );
+
+    
 
     this.btnRestart.setInteractive();
 
