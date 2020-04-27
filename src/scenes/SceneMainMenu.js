@@ -9,7 +9,7 @@ class SceneMainMenu extends Phaser.Scene {
   preload() {
     this.load.image('bg4', 'assets/ken.png');
     this.load.image('logo', 'assets/logo2.png');
-    this.load.image('cover', 'assets/coverkitty4.png');
+    this.load.image('cover', 'assets/coverkitty.png');
     this.load.image('sprBtnPlay', 'assets/sprBtnPlay.png');
     this.load.image('sprBtnPlayHover', 'assets/sprBtnPlayHover.png');
     this.load.image('sprBtnPlayDown', 'assets/sprBtnPlayDown.png');
@@ -19,7 +19,7 @@ class SceneMainMenu extends Phaser.Scene {
 
     // this.add.image(240, 320, 'bg4').setScale(2);
     this.add.image(this.game.config.width * 0.5, 95, 'logo').setScale(0.8);
-    this.add.image(240, 320, 'cover').setScale(0.8);
+    this.add.image(240, 320, 'cover').setScale(0.25);
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.8,
