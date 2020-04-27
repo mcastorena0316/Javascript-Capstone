@@ -8,6 +8,10 @@ import SceneScores from './scenes/SceneScores';
 
 const gameConfig = {
   type: Phaser.WEBGL,
+  parent: 'divId',
+  dom: {
+    createContainer: true,
+  },
   width: 480,
   height: 640,
   backgroundColor: 'black',

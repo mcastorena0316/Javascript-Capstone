@@ -16,7 +16,7 @@ class SceneMainMenu extends Phaser.Scene {
 
   create() {
     this.add.image(this.game.config.width * 0.5, 95, 'logo').setScale(0.8);
-    this.add.image(240, 320, 'cover').setScale(0.25);
+    this.add.image(240, 315, 'cover').setScale(0.25);
 
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
