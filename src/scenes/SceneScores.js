@@ -7,16 +7,39 @@ class SceneScores extends Phaser.Scene {
   }
 
   preload() {
-
+    this.load.image('Btnbackhover', 'assets/btnBack.png');
+    this.load.image('Btnback', 'assets/btnBackHover.png');
   }
 
   create() {
+    this.BtnBack = this.add.sprite(
+      this.game.config.width * 0.9,
+      this.game.config.height * 0.08,
+      'Btnback',
+    );
+
+    this.BtnBack.setInteractive();
+
     this.title = this.add.text(this.game.config.width * 0.2, 100, 'HIGH SCORES', {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
       align: 'center',
+    });
+
+    this.BtnBack.on('pointerover', () => {
+      this.BtnBack.setTexture('Btnbackhover');
+      // this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
+    this.BtnBack.on('pointerup', () => {
+      // this.btnBack.setTexture('BtnPlay');
+      this.scene.start('SceneMainMenu');
+    });
+
+    this.BtnBack.on('pointerout', () => {
+      this.BtnBack.setTexture('Btnback');
     });
 
     const sortData = (x) => {
@@ -60,8 +83,6 @@ class SceneScores extends Phaser.Scene {
         })
         .catch(() => 'Something didnt work');
     };
-
-
     waitForData();
   }
 }

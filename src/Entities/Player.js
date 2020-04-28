@@ -8,7 +8,6 @@ class Player extends Entity {
     super(scene, x, y, key, 'Player', 7);
     this.setData('speed', 200);
     this.setData('score', 0);
-    this.play('sprPlayer');
     this.setData('isShooting', false);
     this.setData('timerShootDelay', 10);
     this.setData('timerShootTick', this.getData('timerShootDelay') - 1);

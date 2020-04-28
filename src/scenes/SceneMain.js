@@ -4,7 +4,6 @@ import Player from '../Entities/Player';
 import DogGun from '../Entities/Enemy0';
 import HumanChaser from '../Entities/Enemy1';
 import SpiderGun from '../Entities/Enemy2';
-import Storage from '../localStorage';
 
 class SceneMain extends Phaser.Scene {
   constructor() {
@@ -15,51 +14,37 @@ class SceneMain extends Phaser.Scene {
   preload() {
     this.load.image('sprBg0', 'assets/bg1.jpg');
     this.load.image('sprBg1', 'assets/bg3.jpg');
+    this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
+    this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
+    this.load.image('sprLifes', 'assets/lifes.png');
     this.load.spritesheet('sprPlayer', 'assets/benito.png', {
       frameWidth: 32,
       frameHeight: 32,
     });
-
-
     this.load.spritesheet('sprEnemy0', 'assets/dog4.png', {
       frameWidth: 50,
       frameHeight: 67.5,
 
     });
-
-
     this.load.spritesheet('sprEnemy1', 'assets/human.png', {
       frameWidth: 50,
       frameHeight: 50,
-
     });
-
     this.load.spritesheet('sprEnemy2', 'assets/cobras.png', {
       frameWidth: 48,
       frameHeight: 48,
     });
-
-
     this.load.spritesheet('sprExplosion', 'assets/explosion.png', {
       frameWidth: 111,
       frameHeight: 109,
     });
-
-
-    this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
-    this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
-    this.load.image('sprLifes', 'assets/lifes.png');
+    this.load.audio('loseLife', 'assets/benitohit.wav');
+    this.load.audio('sndExplode0', 'assets/sndExplode0.wav');
+    this.load.audio('sndExplode1', 'assets/sndExplode1.wav');
   }
 
   create() {
-    // this.backgrounds = [];
-    // for (let i = 0; i < 5; i += 1) {
-    //   const bg = new ScrollingBackground(this, 'sprBg0', i * 10);
-    //   this.backgrounds.push(bg);
-    // }
-
     this.add.image(240, 320, 'sprBg0');
-
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
@@ -67,9 +52,7 @@ class SceneMain extends Phaser.Scene {
       'sprPlayer',
     );
 
-
     this.lifes = this.add.image(20, 20, 'sprLifes').setScale(1.6);
-
     this.title2 = this.add.text(40, 15, `X ${this.player.getData('health')}`, {
       fontFamily: 'monospace',
       fontSize: 20,
@@ -77,13 +60,11 @@ class SceneMain extends Phaser.Scene {
       color: '#ffffff',
       align: 'center',
     });
-
     this.yourScore = this.add.text(40, 600, 'Score: 0', {
       fontFamily: 'monospace',
       fontSize: 20,
       fontStyle: 'bold',
       color: '#ffffff',
-
     });
 
     this.player.setScale(2);
@@ -101,7 +82,6 @@ class SceneMain extends Phaser.Scene {
       frameRate: 6,
       repeat: -1,
     });
-
 
     this.anims.create({
       key: 'sprEnemy2',
@@ -130,6 +110,15 @@ class SceneMain extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
+
+    this.sfx = {
+      explosions: [
+        this.sound.add('sndExplode0'),
+        this.sound.add('sndExplode1'),
+      ],
+      attacked: this.sound.add('loseLife'),
+    };
+
 
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();

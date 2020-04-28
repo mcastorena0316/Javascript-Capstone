@@ -65,6 +65,14 @@ class SceneGameOver extends Phaser.Scene {
     this.btnSubmit.setScale(0.8);
 
 
+    const pointOver = (button) => {
+      button.on('pointerover', () => {
+        button.setTexture('BtnPlayHover');
+        // this.sfx.btnOver.play(); // play the button over sound
+      }, this);
+    };
+
+
     const pointOut = (button) => {
       button.on('pointerout', () => {
         button.setTexture('BtnPlay');
@@ -91,6 +99,8 @@ class SceneGameOver extends Phaser.Scene {
       }, this);
     };
 
+    pointOver(this.btnRestart);
+    pointOver(this.btnSubmit);
     pointOut(this.btnRestart);
     pointOut(this.btnSubmit);
     pointDown(this.btnRestart);
