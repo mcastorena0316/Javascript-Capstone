@@ -1,0 +1,14 @@
+.table-scores thead tr th {
+  color: white;
+  font-size: 30px;
+  border: 1px solid white;
+  padding: 0 35px;
+}
+
+.table-scores tbody tr th, .table-scores tbody tr td {
+  color: white;
+  font-size: 30px;
+  border: 1px solid white;
+  padding: 0 35px;
+}
+/*# sourceMappingURL=style.css.map */

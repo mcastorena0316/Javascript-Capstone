@@ -35,7 +35,6 @@ async function getData() {
     });
     if (response.ok) {
       const jsonResponse = await response.json();
-      console.log(jsonResponse.result);
       return jsonResponse.result;
     }
     throw new Error('Request Failed!');

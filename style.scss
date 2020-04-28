@@ -1,0 +1,23 @@
+.table-scores {
+    thead {
+      tr {
+          th {
+              color: white;
+              font-size:30px;
+              border: 1px solid white;
+              padding: 0 35px;
+          }
+      }     
+    }
+
+    tbody {
+      tr {
+          th, td {
+            color: white;
+              font-size:30px;
+              border: 1px solid white;
+              padding: 0 35px;
+            }
+        }
+    }
+}
