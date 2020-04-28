@@ -37,12 +37,16 @@ class SceneMain extends Phaser.Scene {
       frameWidth: 111,
       frameHeight: 109,
     });
-    this.load.audio('loseLife', 'assets/benitohit.wav');
+    this.load.audio('loseLife', 'assets/benitohit2.wav');
     this.load.audio('sndExplode0', 'assets/sndExplode0.wav');
-    this.load.audio('sndExplode1', 'assets/sndExplode1.wav');
+    this.load.audio('sndExplode1', 'assets/sndExplode1.ogg');
+    this.load.audio('gameMusic', 'assets/gameMusic1.mp3');
+    this.load.audio('sndLaser', 'assets/sndLaser.wav');
   }
 
   create() {
+    this.gamemusic = this.sound.add('gameMusic', { volume: 0.5 });
+    this.gamemusic.play();
     this.add.image(240, 320, 'sprBg0');
     this.player = new Player(
       this,
@@ -112,10 +116,11 @@ class SceneMain extends Phaser.Scene {
 
     this.sfx = {
       explosions: [
-        this.sound.add('sndExplode0'),
-        this.sound.add('sndExplode1'),
+        this.sound.add('sndExplode0', { volume: 0.3 }),
+        this.sound.add('sndExplode1', { volume: 0.4 }),
       ],
-      attacked: this.sound.add('loseLife'),
+      attacked: this.sound.add('loseLife', { volume: 2 }),
+      laser: this.sound.add('sndLaser'),
     };
 
 
@@ -184,6 +189,7 @@ class SceneMain extends Phaser.Scene {
           player.onDestroy();
           enemy.explode(true);
           player.updateScoretoLocal(this.player.getData('score'));
+          this.gamemusic.destroy();
         }
       }
     });
@@ -200,6 +206,7 @@ class SceneMain extends Phaser.Scene {
           player.onDestroy();
           laser.destroy();
           player.updateScoretoLocal(this.player.getData('score'));
+          this.gamemusic.destroy();
         }
       }
     });

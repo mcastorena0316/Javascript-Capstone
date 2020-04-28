@@ -31,6 +31,7 @@ class Player extends Entity {
 
   updateLifes() {
     this.setData('health', this.getData('health') - 1);
+    this.scene.sfx.attacked.play();
   }
 
   updateScore() {
@@ -54,9 +55,9 @@ class Player extends Entity {
         const laser = new PlayerLaser(this.scene, this.x, this.y);
         laser.setScale(1.5);
         this.scene.playerLasers.add(laser);
-
-
-        // need to add sound efect
+        this.scene.sfx.laser.play({
+          volume: 0.8,
+        });
         this.setData('timerShootTick', 0);
       }
     }

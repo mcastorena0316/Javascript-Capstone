@@ -8,24 +8,22 @@ class SceneGameOver extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image('gameOverTitle', 'assets/gameover.png')
     this.load.image('sprImg', 'assets/catsad2.png');
     this.load.image('BtnPlay', 'assets/BtnPlay.png');
     this.load.image('BtnPlayHover', 'assets/BtnPlayHover.png');
     this.load.image('BtnPlayDown', 'assets/BtnPlayDown.png');
+    this.load.audio('gameOverMusic', 'assets/musicGameOver.mp3');
   }
 
   create() {
-    this.add.image(this.game.config.width * 0.5, 270, 'sprImg').setScale(0.35);
+    this.gameOver = this.sound.add('gameOverMusic', { volume: 0.6 });
 
-    this.title = this.add.text(this.game.config.width * 0.2, 80, 'GAME OVER', {
-      fontFamily: 'monospace',
-      fontSize: 48,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
+    this.gameOver.play();
+    this.add.image(this.game.config.width * 0.5, 260, 'sprImg').setScale(0.35);
+    this.add.image(this.game.config.width * 0.55, 80, 'gameOverTitle').setScale(0.7);
 
-    this.score = this.add.text(this.game.config.width * 0.3, 380, `Your Score is: ${localStorage.getItem('score')}`, {
+    this.score = this.add.text(this.game.config.width * 0.3, 375, `Your Score is: ${localStorage.getItem('score')}`, {
       fontFamily: 'monospace',
       fontSize: 20,
       fontStyle: 'bold',
@@ -68,7 +66,6 @@ class SceneGameOver extends Phaser.Scene {
     const pointOver = (button) => {
       button.on('pointerover', () => {
         button.setTexture('BtnPlayHover');
-        // this.sfx.btnOver.play(); // play the button over sound
       }, this);
     };
 
@@ -82,7 +79,6 @@ class SceneGameOver extends Phaser.Scene {
     const pointDown = (button) => {
       button.on('pointerdown', () => {
         button.setTexture('BtnPlayDown');
-        // this.sfx.btnDown.play();
       }, this);
     };
 
@@ -96,6 +92,7 @@ class SceneGameOver extends Phaser.Scene {
       button.on('pointerup', () => {
         button.setTexture('BtnPlay');
         this.scene.start(scene);
+        this.gameOver.destroy();
       }, this);
     };
 
@@ -111,9 +108,9 @@ class SceneGameOver extends Phaser.Scene {
     goToScene(this.btnSubmit, 'SceneScores');
 
     const inputName = document.createElement('div');
-    inputName.innerHTML = '<input type ="text" id= "nameInput" placeholder= "Enter your name"></input>';
+    inputName.innerHTML = '<input type ="text" id= "nameInput" class="nameInput" placeholder= "Enter your name"></input>';
 
-    this.add.dom(240, 430, inputName);
+    this.add.dom(237, 427, inputName);
 
     this.btnSubmit.on('pointerup', () => {
       const inputName = document.getElementById('nameInput').value;

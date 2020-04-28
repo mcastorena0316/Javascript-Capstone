@@ -7,8 +7,9 @@ class SceneScores extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('Btnbackhover', 'assets/btnBack.png');
-    this.load.image('Btnback', 'assets/btnBackHover.png');
+    this.load.image('highScore', 'assets/highscore.png');
+    this.load.image('Btnback', 'assets/btnBack.png');
+    this.load.image('Btnbackhover', 'assets/btnBackHover.png');
   }
 
   create() {
@@ -19,18 +20,11 @@ class SceneScores extends Phaser.Scene {
     );
 
     this.BtnBack.setInteractive();
+    this.highScore = this.add.image(this.game.config.width * 0.5, 120, 'highScore').setScale(0.6);
 
-    this.title = this.add.text(this.game.config.width * 0.2, 100, 'HIGH SCORES', {
-      fontFamily: 'monospace',
-      fontSize: 48,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
 
     this.BtnBack.on('pointerover', () => {
       this.BtnBack.setTexture('Btnbackhover');
-      // this.sfx.btnOver.play(); // play the button over sound
     }, this);
 
     this.BtnBack.on('pointerup', () => {
@@ -51,15 +45,15 @@ class SceneScores extends Phaser.Scene {
       const table = document.createElement('table');
       table.innerHTML = `<thead>
                         <tr>
-                        <th> # </th>
-                        <th> Name </th>
-                        <th> Score </th>
+                        <th> <span> RANKING </span> </th>
+                        <th> <span> NAME </span> </th>
+                        <th> <span> SCORE </span> </th>
                         </tr>
                         </thead>
                         <tbody id='table-body'></tbody>`;
       table.className = 'table-scores';
 
-      this.add.dom(220, 180, table);
+      this.add.dom(220, 200, table);
 
       let listContent = '';
 

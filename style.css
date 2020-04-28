@@ -1,14 +1,37 @@
-.table-scores thead tr th {
-  color: white;
-  font-size: 30px;
-  border: 1px solid white;
-  padding: 0 35px;
+.table-scores {
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
 }
 
-.table-scores tbody tr th, .table-scores tbody tr td {
+.table-scores thead tr th {
   color: white;
-  font-size: 30px;
-  border: 1px solid white;
-  padding: 0 35px;
+  font-size: 25px;
+  padding: 0 20px;
+  padding-bottom: 19px;
+  margin: 10px;
+}
+
+.table-scores thead tr th span {
+  border-bottom: solid 10px #2bccccf5;
+  padding-bottom: 5px;
+}
+
+.table-scores tbody {
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.table-scores tbody tr th {
+  color: #2bccccf5;
+}
+
+.table-scores tbody tr td {
+  color: white;
+  padding: 0 20px;
+}
+
+.nameInput {
+  padding: 9px;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */
