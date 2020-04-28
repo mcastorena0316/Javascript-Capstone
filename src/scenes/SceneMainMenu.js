@@ -8,15 +8,23 @@ class SceneMainMenu extends Phaser.Scene {
 
   preload() {
     this.load.image('logo', 'assets/logo2.png');
+
     this.load.image('cover', 'assets/coverkitty.png');
     this.load.image('BtnPlay', 'assets/BtnPlay.png');
     this.load.image('BtnPlayHover', 'assets/BtnPlayHover.png');
     this.load.image('BtnPlayDown', 'assets/BtnPlayDown.png');
+    this.load.image('BtnMusic', 'assets/BtnMusic.png');
+    this.load.image('BtnMusicOff', 'assets/BtnMusicOff.png');
+    this.load.audio('SongIntro', 'assets/introson.ogg');
+    this.load.audio('sndBtnOver', 'assets/sndBtnOver.wav');
+    this.load.audio('sndBtnDown', 'assets/sndBtnDown.wav');
   }
 
   create() {
     this.add.image(this.game.config.width * 0.5, 95, 'logo').setScale(0.8);
     this.add.image(240, 315, 'cover').setScale(0.25);
+    this.music = this.sound.add('SongIntro', { volume: 0.9 });
+    this.music.play();
 
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
@@ -36,18 +44,25 @@ class SceneMainMenu extends Phaser.Scene {
       'BtnPlay',
     );
 
+    this.btnMusic = this.add.sprite(
+      this.game.config.width * 0.9,
+      this.game.config.height * 0.08,
+      'BtnMusic',
+    );
+
+
     this.btnPlay.setScale(0.75);
     this.btnPlay2.setScale(0.75);
     this.btnPlay3.setScale(0.75);
     this.btnPlay.setInteractive();
     this.btnPlay2.setInteractive();
     this.btnPlay3.setInteractive();
+    this.btnMusic.setInteractive();
 
 
     const pointOver = (button) => {
       button.on('pointerover', () => {
         button.setTexture('BtnPlayHover');
-        // this.sfx.btnOver.play(); // play the button over sound
       }, this);
     };
 
@@ -60,7 +75,6 @@ class SceneMainMenu extends Phaser.Scene {
     const pointDown = (button) => {
       button.on('pointerdown', () => {
         button.setTexture('BtnPlayDown');
-        // this.sfx.btnDown.play();
       }, this);
     };
 
@@ -74,8 +88,24 @@ class SceneMainMenu extends Phaser.Scene {
       button.on('pointerup', () => {
         button.setTexture('BtnPlay');
         this.scene.start(scene);
+        this.music.destroy();
       }, this);
     };
+
+    let isplaying = true;
+
+    this.btnMusic.on('pointerup', () => {
+      if (isplaying) {
+        this.btnMusic.setTexture('BtnMusicOff');
+        this.music.destroy();
+        isplaying = false;
+      } else {
+        this.music = this.sound.add('SongIntro', { volume: 0.9 });
+        this.music.play();
+        this.btnMusic.setTexture('BtnMusic');
+        isplaying = true;
+      }
+    }, this);
 
     pointOver(this.btnPlay);
     pointOver(this.btnPlay2);

@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-// import ScrollingBackground from '../Entities/ScrollingBackground';
 import Player from '../Entities/Player';
 import DogGun from '../Entities/Enemy0';
 import HumanChaser from '../Entities/Enemy1';
