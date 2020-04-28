@@ -1,7 +1,5 @@
 import Phaser from 'phaser';
 
-
-
 class SceneScores extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneScores' });

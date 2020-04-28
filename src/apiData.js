@@ -7,9 +7,6 @@ async function postData(inputName) {
     user: inputName,
     score: localStorage.getItem('score'),
   };
-
-  console.log(apiKey);
-
   try {
     const response = await fetch(fetchingURL, {
       method: 'POST',
@@ -27,6 +24,25 @@ async function postData(inputName) {
   } catch (error) {
     return error;
   }
-};
+}
 
-export default postData;
+async function getData() {
+  const apiKey = '0L4QTVGS6HGPT7OMcNjp';
+  const fetchingURL = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${apiKey}/scores`;
+  try {
+    const response = await fetch(fetchingURL, {
+      mode: 'cors',
+    });
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log(jsonResponse.result);
+      return jsonResponse.result;
+    }
+    throw new Error('Request Failed!');
+  } catch (error) {
+    return error;
+  }
+}
+
+
+export { postData, getData };

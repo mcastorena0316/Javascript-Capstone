@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import postData from '../apiData';
+import { postData, getData } from '../apiData';
 
 
 class SceneGameOver extends Phaser.Scene {
@@ -98,32 +98,20 @@ class SceneGameOver extends Phaser.Scene {
     pointUp(this.btnRestart);
     pointUp(this.btnSubmit);
     goToScene(this.btnRestart, 'SceneMain');
+    goToScene(this.btnSubmit, 'SceneScores');
 
     const inputName = document.createElement('div');
     inputName.innerHTML = '<input type ="text" id= "nameInput" placeholder= "Enter your name"></input>';
 
     this.add.dom(240, 430, inputName);
 
-    // const submitData = () => {
-    //   const playerInfo = { };
-    //   const PlayerInfo = {
-    //     user:
-    //   }
-    //   const inputName = document.getElementById('nameInput');
-
-    //   const getScores = JSON.parse(localStorage.getItem('player-information'));
-    //   getScores.user = inputName.value;
-    //   localStorage.setItem('player-information', JSON.stringify(getScores));
-    //   playerInfo.score = localStorage.getItem('score');
-    //   localStorage.setItem('player-information', JSON.stringify(playerInfo));
-    // };
-
-    // this.btnSubmit.on('pointerup', () => {
-    //   submitData();
-    // });
     this.btnSubmit.on('pointerup', () => {
       const inputName = document.getElementById('nameInput').value;
       postData(inputName);
+    });
+
+    this.btnSubmit.on('pointerup', () => {
+      getData();
     });
   }
 }
