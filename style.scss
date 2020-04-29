@@ -36,6 +36,8 @@
 .nameInput{ 
   padding: 9px;
   border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
 }
 
 .about {
@@ -53,4 +55,11 @@
     padding-top: 58px;
     padding-bottom: 32px;
   }
+}
+
+.title{
+  font-family: 'Righteous', cursive;
+  font-size:25px;
+  cursor: default;
+  color: #68593ff5;
 }

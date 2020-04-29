@@ -43,19 +43,16 @@ class SceneGameOver extends Phaser.Scene {
       'BtnPlay',
     );
 
-    this.btnText = this.add.text(this.game.config.width * 0.42, this.game.config.height * 0.83, 'Restart', {
-      fontSize: 25,
-      fontFamily: 'Arial',
-      color: '#ffffff',
-      align: 'center',
-    });
 
-    this.btnSubmitText = this.add.text(this.game.config.width * 0.42, this.game.config.height * 0.73, 'Submit', {
-      fontSize: 25,
-      fontFamily: 'Arial',
-      color: '#ffffff',
-      align: 'center',
-    });
+    const submitTitle = document.createElement('p');
+    submitTitle.innerText = 'SUBMIT';
+    this.add.dom(this.game.config.width * 0.47, this.game.config.height * 0.70, submitTitle);
+    submitTitle.className = 'title submit-title';
+
+    const restartTitle = document.createElement('p');
+    restartTitle.innerText = 'RESTART';
+    this.add.dom(this.game.config.width * 0.46, this.game.config.height * 0.80, restartTitle);
+    restartTitle.className = 'title restart-title';
 
     this.btnRestart.setInteractive();
     this.btnRestart.setScale(0.8);

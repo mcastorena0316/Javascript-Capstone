@@ -5,7 +5,8 @@ class HumanChaser extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'sprEnemy1', 'HumanChaser');
     this.body.velocity.y = Phaser.Math.Between(50, 100);
-    this.play('sprEnemy1')
+    this.play('sprEnemy1');
+    this.scene.sfx.human.play();
     this.states = {
       MOVE_DOWN: 'MOVE_DOWN',
       CHASE: 'CHASE',

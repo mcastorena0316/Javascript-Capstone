@@ -42,6 +42,7 @@ class SceneMain extends Phaser.Scene {
     this.load.audio('sndExplode1', 'assets/sndExplode1.ogg');
     this.load.audio('gameMusic', 'assets/gameMusic1.mp3');
     this.load.audio('sndLaser', 'assets/sndLaser.wav');
+    this.load.audio('humanVoice', 'assets/humanvoice.wav');
   }
 
   create() {
@@ -121,6 +122,7 @@ class SceneMain extends Phaser.Scene {
       ],
       attacked: this.sound.add('loseLife', { volume: 2 }),
       laser: this.sound.add('sndLaser'),
+      human: this.sound.add('humanVoice', { volume: 0.5 }),
     };
 
 

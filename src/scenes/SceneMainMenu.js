@@ -26,6 +26,23 @@ class SceneMainMenu extends Phaser.Scene {
     this.music = this.sound.add('SongIntro', { volume: 0.9 });
     this.music.play();
 
+
+    const playTitle = document.createElement('p');
+    playTitle.innerText = 'PLAY';
+    this.add.dom(this.game.config.width * 0.48, this.game.config.height * 0.70, playTitle);
+    playTitle.className = 'title play-title';
+
+    const aboutTitle = document.createElement('p');
+    aboutTitle.innerText = 'ABOUT';
+    this.add.dom(this.game.config.width * 0.47, this.game.config.height * 0.78, aboutTitle);
+    aboutTitle.className = 'title about-title';
+
+    const scoreTitle = document.createElement('p');
+    scoreTitle.innerText = 'SCORES';
+    this.add.dom(this.game.config.width * 0.47, this.game.config.height * 0.86, scoreTitle);
+    scoreTitle.className = 'title score-title';
+
+
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.75,
@@ -122,31 +139,6 @@ class SceneMainMenu extends Phaser.Scene {
     goToScene(this.btnPlay, 'SceneMain');
     goToScene(this.btnPlay2, 'SceneAbout');
     goToScene(this.btnPlay3, 'SceneScores');
-
-
-    this.title = this.add.text(this.game.config.width * 0.43, this.game.config.height * 0.73, 'PLAY', {
-      fontFamily: 'roboto',
-      fontSize: 25,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
-
-    this.title2 = this.add.text(this.game.config.width * 0.41, this.game.config.height * 0.81, 'ABOUT', {
-      fontFamily: 'roboto',
-      fontSize: 25,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
-
-    this.title3 = this.add.text(this.game.config.width * 0.41, this.game.config.height * 0.89, 'SCORES', {
-      fontFamily: 'roboto',
-      fontSize: 25,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
   }
 }
 
