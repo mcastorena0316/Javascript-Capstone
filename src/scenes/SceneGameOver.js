@@ -20,10 +20,10 @@ class SceneGameOver extends Phaser.Scene {
     this.gameOver = this.sound.add('gameOverMusic', { volume: 0.6 });
 
     this.gameOver.play();
-    this.add.image(this.game.config.width * 0.5, 260, 'sprImg').setScale(0.35);
+    this.add.image(this.game.config.width * 0.5, 240, 'sprImg').setScale(0.35);
     this.add.image(this.game.config.width * 0.55, 80, 'gameOverTitle').setScale(0.7);
 
-    this.score = this.add.text(this.game.config.width * 0.3, 375, `Your Score is: ${localStorage.getItem('score')}`, {
+    this.score = this.add.text(this.game.config.width * 0.3, 360, `Your Score is: ${localStorage.getItem('score')}`, {
       fontFamily: 'monospace',
       fontSize: 20,
       fontStyle: 'bold',
@@ -107,7 +107,7 @@ class SceneGameOver extends Phaser.Scene {
     const inputName = document.createElement('div');
     inputName.innerHTML = '<input type ="text" id= "nameInput" class="nameInput" placeholder= "Enter your name"></input>';
 
-    this.add.dom(237, 427, inputName);
+    this.add.dom(237, 420, inputName);
 
     this.btnSubmit.on('pointerup', () => {
       const inputName = document.getElementById('nameInput').value;

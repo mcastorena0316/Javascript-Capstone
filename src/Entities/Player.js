@@ -34,8 +34,14 @@ class Player extends Entity {
     this.scene.sfx.attacked.play();
   }
 
-  updateScore() {
-    this.setData('score', this.getData('score') + 10);
+  updateScore(enemy) {
+    if (enemy.getData('type') === 'HumanChaser') {
+      this.setData('score', this.getData('score') + 15);
+    } else if (enemy.getData('type') === 'DogGun') {
+      this.setData('score', this.getData('score') + 10);
+    } else {
+      this.setData('score', this.getData('score') + 5);
+    }
   }
 
   updateScoretoLocal() {

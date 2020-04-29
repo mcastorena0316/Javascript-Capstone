@@ -174,7 +174,7 @@ class SceneMain extends Phaser.Scene {
         enemy.explode(true);
         enemy.body = null;
         playerLaser.destroy();
-        this.player.updateScore();
+        this.player.updateScore(enemy);
         this.yourScore.setText(`Score: ${this.player.getData('score')}`);
       }
     });
@@ -227,10 +227,6 @@ class SceneMain extends Phaser.Scene {
 
 
   update() {
-    // for (let i = 0; i < this.backgrounds.length; i += 1) {
-    //   this.backgrounds[i].update();
-    // }
-
     if (!this.player.getData('isDead')) {
       this.player.update();
       const cursors = this.input.keyboard.createCursorKeys();

@@ -36,11 +36,6 @@ class SceneScores extends Phaser.Scene {
       this.BtnBack.setTexture('Btnback');
     });
 
-    const sortData = (x) => {
-      const newArray = x;
-      newArray.sort((x, y) => y.score - x.score).slice(0, 10);
-    };
-
     const displayData = (array) => {
       const table = document.createElement('table');
       table.innerHTML = `<thead>
@@ -53,7 +48,7 @@ class SceneScores extends Phaser.Scene {
                         <tbody id='table-body'></tbody>`;
       table.className = 'table-scores';
 
-      this.add.dom(210, 200, table);
+      this.add.dom(195, 200, table);
 
       let listContent = '';
 
@@ -69,11 +64,17 @@ class SceneScores extends Phaser.Scene {
       });
     };
 
+    const sortData = (x) => {
+      const newArray = x;
+      const sliceArray = newArray.sort((x, y) => y.score - x.score).slice(0, 10);
+      displayData(sliceArray);
+    };
+
+
     const waitForData = () => {
       getData()
         .then(x => {
           sortData(x);
-          displayData(x);
         })
         .catch(() => 'Something didnt work');
     };
