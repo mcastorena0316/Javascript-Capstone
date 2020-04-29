@@ -49,6 +49,7 @@ class SceneMain extends Phaser.Scene {
     this.gamemusic = this.sound.add('gameMusic', { volume: 0.5 });
     this.gamemusic.play();
     this.add.image(240, 320, 'sprBg0');
+
     this.player = new Player(
       this,
       this.game.config.width * 0.5,

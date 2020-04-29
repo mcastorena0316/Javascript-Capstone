@@ -28,7 +28,6 @@ class SceneScores extends Phaser.Scene {
     }, this);
 
     this.BtnBack.on('pointerup', () => {
-      // this.btnBack.setTexture('BtnPlay');
       this.scene.start('SceneMainMenu');
     });
 

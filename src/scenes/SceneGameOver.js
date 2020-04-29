@@ -18,10 +18,24 @@ class SceneGameOver extends Phaser.Scene {
 
   create() {
     this.gameOver = this.sound.add('gameOverMusic', { volume: 0.6 });
-
     this.gameOver.play();
     this.add.image(this.game.config.width * 0.5, 240, 'sprImg').setScale(0.35);
     this.add.image(this.game.config.width * 0.55, 80, 'gameOverTitle').setScale(0.7);
+
+    const submitTitle = document.createElement('p');
+    submitTitle.innerText = 'SUBMIT';
+    this.add.dom(this.game.config.width * 0.47, this.game.config.height * 0.70, submitTitle);
+    submitTitle.className = 'title submit-title';
+
+    const restartTitle = document.createElement('p');
+    restartTitle.innerText = 'RESTART';
+    this.add.dom(this.game.config.width * 0.46, this.game.config.height * 0.80, restartTitle);
+    restartTitle.className = 'title restart-title';
+
+    const inputName = document.createElement('div');
+    inputName.innerHTML = '<input type ="text" id= "nameInput" class="nameInput" placeholder= "Enter your name"></input>';
+
+    this.add.dom(237, 420, inputName);
 
     this.score = this.add.text(this.game.config.width * 0.3, 360, `Your Score is: ${localStorage.getItem('score')}`, {
       fontFamily: 'monospace',
@@ -43,16 +57,6 @@ class SceneGameOver extends Phaser.Scene {
       'BtnPlay',
     );
 
-
-    const submitTitle = document.createElement('p');
-    submitTitle.innerText = 'SUBMIT';
-    this.add.dom(this.game.config.width * 0.47, this.game.config.height * 0.70, submitTitle);
-    submitTitle.className = 'title submit-title';
-
-    const restartTitle = document.createElement('p');
-    restartTitle.innerText = 'RESTART';
-    this.add.dom(this.game.config.width * 0.46, this.game.config.height * 0.80, restartTitle);
-    restartTitle.className = 'title restart-title';
 
     this.btnRestart.setInteractive();
     this.btnRestart.setScale(0.8);
@@ -104,10 +108,6 @@ class SceneGameOver extends Phaser.Scene {
     goToScene(this.btnRestart, 'SceneMain');
     goToScene(this.btnSubmit, 'SceneScores');
 
-    const inputName = document.createElement('div');
-    inputName.innerHTML = '<input type ="text" id= "nameInput" class="nameInput" placeholder= "Enter your name"></input>';
-
-    this.add.dom(237, 420, inputName);
 
     this.btnSubmit.on('pointerup', () => {
       const inputName = document.getElementById('nameInput').value;
