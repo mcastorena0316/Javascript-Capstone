@@ -37,3 +37,20 @@
   padding: 9px;
   border-radius: 5px;
 }
+
+.about {
+  padding-top: 43px;
+  font-family: 'Roboto Mono', monospace;
+  color:white;
+  margin-top: 54px;
+  font-size: 20px;
+  p {
+    text-align: center;
+    padding: 0px 20px
+  }
+  .arrows {
+    padding:10px;
+    padding-top: 58px;
+    padding-bottom: 32px;
+  }
+}

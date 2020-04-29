@@ -53,7 +53,7 @@ class SceneScores extends Phaser.Scene {
                         <tbody id='table-body'></tbody>`;
       table.className = 'table-scores';
 
-      this.add.dom(220, 200, table);
+      this.add.dom(210, 200, table);
 
       let listContent = '';
 
