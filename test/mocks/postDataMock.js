@@ -17,6 +17,7 @@ async function postData(inputName, scoring) {
       body: JSON.stringify(data),
     });
     if (response.ok) {
+      // eslint-disable-next-line no-unused-vars
       const jsonResponse = await response.json();
       return 'Everything is working';
     }

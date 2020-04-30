@@ -1,5 +1,5 @@
 import { getData } from '../src/apiData';
-import postData from './mocks/MockPostData';
+import postData from './mocks/postDataMock';
 
 import '@babel/polyfill';
 
