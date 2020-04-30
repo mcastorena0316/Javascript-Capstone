@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
 import { getData } from '../apiData';
 
+import '@babel/polyfill';
+
 class SceneScores extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneScores' });

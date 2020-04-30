@@ -1,5 +1,11 @@
+
 {
+    "env": {
+      "test": {
+        "plugins": ["@babel/plugin-transform-runtime"]
+      }
+    },
     "presets": [
-        "env"
-    ]
+      "env"
+  ]
 }
