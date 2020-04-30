@@ -36,7 +36,7 @@ class Player extends Entity {
 
   updateScore(enemy) {
     if (enemy.getData('type') === 'HumanChaser') {
-      this.setData('score', this.getData('score') + 20);
+      this.setData('score', this.getData('score') + 25);
     } else if (enemy.getData('type') === 'DogGun') {
       this.setData('score', this.getData('score') + 15);
     } else {

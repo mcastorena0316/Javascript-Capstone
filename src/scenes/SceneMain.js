@@ -12,7 +12,6 @@ class SceneMain extends Phaser.Scene {
 
   preload() {
     this.load.image('sprBg0', 'assets/bg1.jpg');
-    this.load.image('sprBg1', 'assets/bg3.jpg');
     this.load.image('sprLaserPlayer', 'assets/sprLaserPlayer.png');
     this.load.image('sprLaserEnemy0', 'assets/sprLaserEnemy0.png');
     this.load.image('sprLifes', 'assets/lifes.png');
