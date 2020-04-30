@@ -20,30 +20,7 @@ class SceneGameOver extends Phaser.Scene {
     this.gameOver = this.sound.add('gameOverMusic', { volume: 0.6 });
     this.gameOver.play();
     this.add.image(this.game.config.width * 0.5, 240, 'sprImg').setScale(0.35);
-    this.add.image(this.game.config.width * 0.55, 80, 'gameOverTitle').setScale(0.7);
-
-    const submitTitle = document.createElement('p');
-    submitTitle.innerText = 'SUBMIT';
-    this.add.dom(this.game.config.width * 0.47, this.game.config.height * 0.70, submitTitle);
-    submitTitle.className = 'title submit-title';
-
-    const restartTitle = document.createElement('p');
-    restartTitle.innerText = 'RESTART';
-    this.add.dom(this.game.config.width * 0.46, this.game.config.height * 0.80, restartTitle);
-    restartTitle.className = 'title restart-title';
-
-    const inputName = document.createElement('div');
-    inputName.innerHTML = '<input type ="text" id= "nameInput" class="nameInput" placeholder= "Enter your name"></input>';
-
-    this.add.dom(237, 420, inputName);
-
-    this.score = this.add.text(this.game.config.width * 0.3, 360, `Your Score is: ${localStorage.getItem('score')}`, {
-      fontFamily: 'monospace',
-      fontSize: 20,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
+    this.add.image(this.game.config.width * 0.52, 80, 'gameOverTitle').setScale(0.7);
 
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
@@ -56,6 +33,36 @@ class SceneGameOver extends Phaser.Scene {
       this.game.config.height * 0.75,
       'BtnPlay',
     );
+
+
+    this.submitTitle = this.add.text(this.game.config.width * 0.41, this.game.config.height * 0.725, 'SUBMIT', {
+      fontFamily: 'Righteous',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#68593ff5',
+      align: 'center',
+    });
+
+    this.restartTitle = this.add.text(this.game.config.width * 0.39, this.game.config.height * 0.825, 'RESTART', {
+      fontFamily: 'Righteous',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#68593ff5',
+      align: 'center',
+    });
+
+    const inputName = document.createElement('div');
+    inputName.innerHTML = '<input type ="text" id= "nameInput" class="nameInput" placeholder= "Enter your name"></input>';
+
+    this.add.dom(this.game.config.width * 0.78, 420, inputName);
+
+    this.score = this.add.text(this.game.config.width * 0.3, 360, `Your Score is: ${localStorage.getItem('score')}`, {
+      fontFamily: 'monospace',
+      fontSize: 20,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
 
 
     this.btnRestart.setInteractive();

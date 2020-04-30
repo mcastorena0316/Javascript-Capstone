@@ -27,28 +27,6 @@ class SceneMainMenu extends Phaser.Scene {
     this.music.play();
 
 
-    const playTitle = document.createElement('p');
-    playTitle.innerText = 'PLAY';
-    this.add.dom(this.game.config.width * 0.48, this.game.config.height * 0.70, playTitle);
-    playTitle.className = 'title play-title';
-
-    const aboutTitle = document.createElement('p');
-    aboutTitle.innerText = 'ABOUT';
-    this.add.dom(this.game.config.width * 0.47, this.game.config.height * 0.78, aboutTitle);
-    aboutTitle.className = 'title about-title';
-
-    const scoreTitle = document.createElement('p');
-    scoreTitle.innerText = 'SCORES';
-    this.add.dom(this.game.config.width * 0.47, this.game.config.height * 0.86, scoreTitle);
-    scoreTitle.className = 'title score-title';
-
-
-    this.btnPlay = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.75,
-      'BtnPlay',
-    );
-
     this.btnPlay2 = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.83,
@@ -61,12 +39,42 @@ class SceneMainMenu extends Phaser.Scene {
       'BtnPlay',
     );
 
+
+    this.btnPlay = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.75,
+      'BtnPlay',
+    );
+
+    this.playTitle = this.add.text(this.game.config.width * 0.44, this.game.config.height * 0.725, 'PLAY', {
+      fontFamily: 'Righteous',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#68593ff5',
+      align: 'center',
+    });
+
+    this.aboutTitle = this.add.text(this.game.config.width * 0.41, this.game.config.height * 0.805, 'ABOUT', {
+      fontFamily: 'Righteous',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#68593ff5',
+      align: 'center',
+    });
+
+    this.scoreTitle = this.add.text(this.game.config.width * 0.40, this.game.config.height * 0.885, 'SCORES', {
+      fontFamily: 'Righteous',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#68593ff5',
+      align: 'center',
+    });
+
     this.btnMusic = this.add.sprite(
       this.game.config.width * 0.9,
       this.game.config.height * 0.08,
       'BtnMusic',
     );
-
 
     this.btnPlay.setScale(0.75);
     this.btnPlay2.setScale(0.75);

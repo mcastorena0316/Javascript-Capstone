@@ -16,8 +16,35 @@ class SceneAbout extends Phaser.Scene {
 
   create() {
     this.title = this.add.image(this.game.config.width * 0.5, 105, 'aboutTitle');
-    this.keys = this.add.image(230, 352, 'keys');
-    this.keys = this.add.image(230, 468, 'spaceBar');
+    this.keys = this.add.image(230, 340, 'keys');
+    this.spacebar = this.add.image(230, 466, 'spaceBar');
+
+    const settings = {
+      fontFamily: 'Roboto Mono',
+      fontSize: 20,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+      wordWrap: {
+        width: this.game.config.width * 0.90,
+        useAdvancedWrap: true,
+      },
+    };
+
+    this.aboutText1 = this.add.text(this.game.config.width * 0.08, this.game.config.height * 0.25,
+      'Cat Gun is a cat-lovers shooter game where you need to help Benito The Cat,  defeat some of his biggest enemies', settings);
+
+    this.aboutText2 = this.add.text(this.game.config.width * 0.20, this.game.config.height * 0.42,
+      'Enter to battle using the', settings);
+
+    this.aboutText3 = this.add.text(this.game.config.width * 0.08, this.game.config.height * 0.6,
+      'arrow keys for mobility and if you see a bad guy, use', settings);
+
+    this.aboutText4 = this.add.text(this.game.config.width * 0.33, this.game.config.height * 0.79,
+      'to shoot it!', settings);
+
+    this.aboutText5 = this.add.text(this.game.config.width * 0.08, this.game.config.height * 0.86,
+      'You have 7 lives, use them wisely, and have fun.', settings);
 
 
     this.BtnBack = this.add.sprite(
@@ -39,17 +66,6 @@ class SceneAbout extends Phaser.Scene {
     this.BtnBack.on('pointerout', () => {
       this.BtnBack.setTexture('Btnback');
     });
-
-    const aboutText = document.createElement('div');
-    aboutText.className = 'about';
-    aboutText.innerHTML = `
-    <p>Cat Gun is a cat-lovers shooter game where you need to help Benito The Cat,  defeat some of his biggest enemies. </p>
-    <p>Enter to battle using the</p>
-    <p class="arrows">arrow keys for mobility and if you see a bad guy, use</p>
-    <p>to shoot it!.</p>
-    <p>You have 7 lives, use them wisely, and have fun.</p>`;
-
-    this.add.dom(237, 300, aboutText);
   }
 }
 

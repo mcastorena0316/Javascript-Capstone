@@ -22,7 +22,7 @@ class SceneScores extends Phaser.Scene {
     );
 
     this.BtnBack.setInteractive();
-    this.highScore = this.add.image(this.game.config.width * 0.5, 120, 'highScore').setScale(0.6);
+    this.highScore = this.add.image(this.game.config.width * 0.5, 120, 'highScore').setScale(0.7);
 
 
     this.BtnBack.on('pointerover', () => {
@@ -49,7 +49,7 @@ class SceneScores extends Phaser.Scene {
                         <tbody id='table-body'></tbody>`;
       table.className = 'table-scores';
 
-      this.add.dom(195, 200, table);
+      this.add.dom(185, 200, table);
 
       let listContent = '';
 

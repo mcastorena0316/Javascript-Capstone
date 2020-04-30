@@ -1,3 +1,15 @@
+canvas {
+  margin: 0 auto;
+  display:flex
+}
+
+div {
+  margin-right: auto!important;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+}
+
 .table-scores {
   font-family: 'Roboto Mono', monospace;
   text-align: center;
@@ -15,6 +27,7 @@
             }
              
           }
+
       }     
     }
 
@@ -38,28 +51,4 @@
   border-radius: 5px;
   text-align: center;
   font-size: 16px;
-}
-
-.about {
-  padding-top: 43px;
-  font-family: 'Roboto Mono', monospace;
-  color:white;
-  margin-top: 54px;
-  font-size: 20px;
-  p {
-    text-align: center;
-    padding: 0px 20px
-  }
-  .arrows {
-    padding:10px;
-    padding-top: 58px;
-    padding-bottom: 32px;
-  }
-}
-
-.title{
-  font-family: 'Righteous', cursive;
-  font-size:25px;
-  cursor: default;
-  color: #68593ff5;
 }
