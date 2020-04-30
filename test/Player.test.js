@@ -1,4 +1,5 @@
 
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 import 'jest-canvas-mock';
 import Player from '../src/Entities/Player';
 import Entity from '../src/Entities/Entity';

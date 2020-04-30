@@ -1,6 +1,7 @@
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 import Phaser from 'phaser';
 import { getData } from '../apiData';
-
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 import '@babel/polyfill';
 
 class SceneScores extends Phaser.Scene {

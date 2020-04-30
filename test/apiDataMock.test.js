@@ -1,5 +1,5 @@
 import { getData, postData } from './mocks/apiDataMock';
-
+// eslint-disable-next-line import/no-unresolved, import/no-extraneous-dependencies
 import '@babel/polyfill';
 
 test('Simulate a method post with data:user and score , to our API', () => {
