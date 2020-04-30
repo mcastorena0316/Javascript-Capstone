@@ -176,6 +176,7 @@ class SceneMain extends Phaser.Scene {
         playerLaser.destroy();
         this.player.updateScore(enemy);
         this.yourScore.setText(`Score: ${this.player.getData('score')}`);
+        this.player.updateScoretoLocal(this.player.getData('score'));
       }
     });
 
@@ -190,7 +191,6 @@ class SceneMain extends Phaser.Scene {
           player.explode(false);
           player.onDestroy();
           enemy.explode(true);
-          player.updateScoretoLocal(this.player.getData('score'));
           this.gamemusic.destroy();
         }
       }
@@ -207,7 +207,6 @@ class SceneMain extends Phaser.Scene {
           player.explode(false);
           player.onDestroy();
           laser.destroy();
-          player.updateScoretoLocal(this.player.getData('score'));
           this.gamemusic.destroy();
         }
       }
