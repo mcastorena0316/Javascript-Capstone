@@ -122,7 +122,7 @@ class SceneMain extends Phaser.Scene {
       ],
       attacked: this.sound.add('loseLife', { volume: 2 }),
       laser: this.sound.add('sndLaser'),
-      human: this.sound.add('humanVoice', { volume: 0.5 }),
+      human: this.sound.add('humanVoice', { volume: 0.3 }),
     };
 
 
