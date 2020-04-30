@@ -8,7 +8,7 @@
 * [About the Project](#about-the-project)
 * [The Game](#the-game)
   * [Inspiration](#inspiration)
-  * [Installation](#installation)
+  * [How to Play](#how-to-play)
   * [Instalation](#instalation)
   * [Characters](#characters)
   * [Scenes](#scenes)
@@ -71,7 +71,6 @@ You can always use the [live version](https://cat-gun.netlify.app/) to play righ
 ### Characters
 
 * Player: <div ><img src="assets/benitoPlayer.png"></div>
-
 Benito the Cat: He can move at 4 directions, and use the space bar to shoot his enemies. Like all cats, he has 7 lives.
 
 * Enemy 1 : <div ><img src="assets/dogEnemy.png"></div>
