@@ -1,0 +1,65 @@
+.table-scores {
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+    thead {
+      tr {
+          th {
+            color: white;
+            font-size:25px;
+            padding: 0 20px;
+            padding-bottom: 19px;
+            margin: 10px;
+            span {
+            border-bottom: solid 10px #2bccccf5;
+            padding-bottom: 5px;
+            }
+             
+          }
+      }     
+    }
+
+    tbody {
+      margin-top:10px;
+      font-size:25px;
+      tr {
+        th {
+          color: #2bccccf5;
+        }
+          td {
+            color: white;
+              padding: 0 20px;
+            }
+        }
+    }
+}
+
+.nameInput{ 
+  padding: 9px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.about {
+  padding-top: 43px;
+  font-family: 'Roboto Mono', monospace;
+  color:white;
+  margin-top: 54px;
+  font-size: 20px;
+  p {
+    text-align: center;
+    padding: 0px 20px
+  }
+  .arrows {
+    padding:10px;
+    padding-top: 58px;
+    padding-bottom: 32px;
+  }
+}
+
+.title{
+  font-family: 'Righteous', cursive;
+  font-size:25px;
+  cursor: default;
+  color: #68593ff5;
+}

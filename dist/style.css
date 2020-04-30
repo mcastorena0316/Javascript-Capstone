@@ -1,0 +1,65 @@
+.table-scores {
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+}
+
+.table-scores thead tr th {
+  color: white;
+  font-size: 25px;
+  padding: 0 20px;
+  padding-bottom: 19px;
+  margin: 10px;
+}
+
+.table-scores thead tr th span {
+  border-bottom: solid 10px #2bccccf5;
+  padding-bottom: 5px;
+}
+
+.table-scores tbody {
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+.table-scores tbody tr th {
+  color: #2bccccf5;
+}
+
+.table-scores tbody tr td {
+  color: white;
+  padding: 0 20px;
+}
+
+.nameInput {
+  padding: 9px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.about {
+  padding-top: 43px;
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+  margin-top: 54px;
+  font-size: 20px;
+}
+
+.about p {
+  text-align: center;
+  padding: 0px 20px;
+}
+
+.about .arrows {
+  padding: 10px;
+  padding-top: 58px;
+  padding-bottom: 32px;
+}
+
+.title {
+  font-family: 'Righteous', cursive;
+  font-size: 25px;
+  cursor: default;
+  color: #68593ff5;
+}
+/*# sourceMappingURL=style.css.map */
