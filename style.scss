@@ -1,0 +1,53 @@
+canvas {
+  margin: 0 auto;
+  display:flex
+}
+
+div {
+  margin-right: auto!important;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+}
+
+.table-scores {
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+    thead {
+      tr {
+          th {
+            color: white;
+            font-size:25px;
+            padding: 0 20px;
+            padding-bottom: 19px;
+            margin: 10px;
+            span {
+            border-bottom: solid 10px #2bccccf5;
+            padding-bottom: 5px;
+            }
+             
+          }
+      }     
+    }
+
+    tbody {
+      margin-top:10px;
+      font-size:25px;
+      tr {
+        th {
+          color: #2bccccf5;
+        }
+          td {
+            color: white;
+              padding: 0 20px;
+            }
+        }
+    }
+}
+
+.nameInput{ 
+  padding: 9px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
