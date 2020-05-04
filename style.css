@@ -33,6 +33,7 @@ div {
 .table-scores tbody {
   margin-top: 10px;
   font-size: 25px;
+  word-break: break-word;
 }
 
 .table-scores tbody tr th {
