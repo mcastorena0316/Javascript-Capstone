@@ -15,6 +15,7 @@ div {
 .table-scores {
   font-family: 'Roboto Mono', monospace;
   text-align: center;
+  left: 28px;
 }
 
 .table-scores thead tr th {
