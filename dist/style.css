@@ -20,7 +20,6 @@ div {
 .table-scores thead tr th {
   color: white;
   font-size: 25px;
-  padding: 0 20px;
   padding-bottom: 19px;
   margin: 10px;
 }
@@ -32,7 +31,7 @@ div {
 
 .table-scores tbody {
   margin-top: 10px;
-  font-size: 25px;
+  font-size: 22px;
   word-break: break-word;
 }
 
@@ -42,7 +41,6 @@ div {
 
 .table-scores tbody tr td {
   color: white;
-  padding: 0 20px;
 }
 
 .nameInput {
