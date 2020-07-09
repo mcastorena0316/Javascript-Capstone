@@ -9,13 +9,13 @@
 * [The Game](#the-game)
   * [Inspiration](#inspiration)
   * [How to Play](#how-to-play)
-  * [Instalation](#instalation)
+  * [Installation](#installation)
   * [Characters](#characters)
   * [Scenes](#scenes)
-* [Tecnologies used](#tecnologies-used)
+* [Technologies used](#technologies-used)
 * [Author](#author)
 * [Show your Support](#show-your-support)
-* [Acknowledgements](#acknowledgements)
+* [Acknowledgments](#acknowledgments)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -44,7 +44,7 @@ This game is inspired in my cat "Benito" and the villains include one of his wor
 <!-- HOW TO PLAY -->
 ### How to Play
 
-You can move around the screen using the arrow keys <div ><img src="assets/keys.png"></div> for moving aroung and use the Space Bar <div ><img src="assets/spaceBar.png"></div> to shoot whenever you see a bad guy.
+You can move around the screen using the arrow keys <div ><img src="assets/keys.png"></div> for moving around and use the Space Bar <div ><img src="assets/spaceBar.png"></div> to shoot whenever you see a bad guy.
 
 
 <!-- INSTALLATION -->
@@ -107,7 +107,7 @@ Human Chaser: He will chase you through all the game. You will receive +25 point
 
 
 <!-- TECNOLOGIES USED -->
-## Tecnologies used
+## Technologies used
 
 *   HTML5
 *   Phaser 3
@@ -133,7 +133,7 @@ Human Chaser: He will chase you through all the game. You will receive +25 point
 Give a star if you like this project!
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
+## Acknowledgments
 
 * [Microverse](https://www.microverse.org/)
 * [Phaser](https://phaser.io/)
