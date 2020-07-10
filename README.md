@@ -15,6 +15,7 @@
 * [Technologies used](#technologies-used)
 * [Author](#author)
 * [Show your Support](#show-your-support)
+* [Potential Future features](#potential-features)
 * [Acknowledgments](#acknowledgments)
 
 <!-- ABOUT THE PROJECT -->
@@ -131,6 +132,14 @@ Human Chaser: He will chase you through all the game. You will receive +25 point
 ## Show your Support
 
 Give a star if you like this project!
+
+<!-- POTENTIAL FEATURES -->
+## Potential features
+
+* Create a mobile version.
+* Increase the difficulty as the game moves on.
+* Make opponents have a  higher speed or/and longer live.
+
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgments
